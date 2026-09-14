@@ -1,5 +1,6 @@
 import { animate as anime, createTimeline } from 'animejs';
 import { animate as motion } from 'motion';
+import { getLenis } from './scroll.js';
 
 /**
  * Contact form: inline validation, micro-interactions and an animated
@@ -47,6 +48,9 @@ export function initForm() {
 
     setTimeout(() => {
       success.classList.add('is-visible');
+      // Bring the confirmation into view (form may be taller than the screen on mobile)
+      const lenis = getLenis();
+      if (lenis) lenis.scrollTo(form, { offset: -90, duration: 1.2 });
       const tl = createTimeline({ defaults: { ease: 'outExpo' } });
       tl.add('.fs-circle', { strokeDashoffset: [200, 0], duration: 900, ease: 'inOutQuart' })
         .add('.fs-check', { strokeDashoffset: [200, 0], duration: 600, ease: 'outQuart' }, '-=300')

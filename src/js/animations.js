@@ -124,6 +124,12 @@ export function initAnimations({ explodeScene }) {
     onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 1.2, stagger: 0.1, ease: 'expo.out', overwrite: true }),
   });
 
+  /* FAQ rows */
+  gsap.from('.faq__item', {
+    opacity: 0, y: 30, duration: 1.1, stagger: 0.09, ease: 'expo.out',
+    scrollTrigger: { trigger: '.faq__list', start: 'top 85%', once: true },
+  });
+
   /* Counters */
   document.querySelectorAll('[data-count]:not(.hero__stat-num)').forEach((el) => {
     ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => counter(el) });
@@ -271,24 +277,42 @@ function initProcess() {
     },
   });
 
-  // Reveal each step as it enters horizontally
-  steps.forEach((step) => {
+  // Reveal choreography for a single step
+  const revealStep = (step, delay = 0) => {
+    if (step.dataset.revealed) return;
+    step.dataset.revealed = '1';
     const visual = step.querySelector('.step__visual');
     const body = step.querySelectorAll('.step__body > *');
     const index = step.querySelector('.step__index');
-    gsap.set(visual, { clipPath: 'inset(0 100% 0 0 round 26px)' });
-    gsap.set(index, { opacity: 0, x: -30 });
-    gsap.set(body, { opacity: 0, y: 30 });
+    gsap.to(visual, { clipPath: 'inset(0 0% 0 0 round 26px)', duration: 1.4, ease: 'expo.out', delay });
+    gsap.to(index, { opacity: 1, x: 0, duration: 1, ease: 'expo.out', delay });
+    gsap.to(body, { opacity: 1, y: 0, duration: 1, stagger: 0.08, ease: 'expo.out', delay: delay + 0.2 });
+  };
+
+  steps.forEach((step) => {
+    gsap.set(step.querySelector('.step__visual'), { clipPath: 'inset(0 100% 0 0 round 26px)' });
+    gsap.set(step.querySelector('.step__index'), { opacity: 0, x: -30 });
+    gsap.set(step.querySelectorAll('.step__body > *'), { opacity: 0, y: 30 });
+  });
+
+  // Steps already inside the viewport when the section arrives play as a
+  // staggered sequence on entry (instead of silently revealing at page load);
+  // the rest reveal as they scroll in horizontally.
+  const initiallyVisible = [...steps].filter((s) => s.getBoundingClientRect().left < window.innerWidth * 0.8);
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top 55%',
+    once: true,
+    onEnter: () => initiallyVisible.forEach((s, i) => revealStep(s, 0.35 + i * 0.25)),
+  });
+  steps.forEach((step) => {
+    if (initiallyVisible.includes(step)) return;
     ScrollTrigger.create({
       trigger: step,
       containerAnimation: tween,
       start: 'left 80%',
       once: true,
-      onEnter: () => {
-        gsap.to(visual, { clipPath: 'inset(0 0% 0 0 round 26px)', duration: 1.4, ease: 'expo.out' });
-        gsap.to(index, { opacity: 1, x: 0, duration: 1, ease: 'expo.out' });
-        gsap.to(body, { opacity: 1, y: 0, duration: 1, stagger: 0.08, ease: 'expo.out', delay: 0.2 });
-      },
+      onEnter: () => revealStep(step),
     });
   });
 
@@ -296,6 +320,17 @@ function initProcess() {
   gsap.from(section.querySelectorAll('.process__head > *'), {
     y: 40, opacity: 0, duration: 1.2, stagger: 0.1, ease: 'expo.out',
     scrollTrigger: { trigger: section, start: 'top 70%', once: true },
+  });
+
+  // "Ready?" closer
+  const end = section.querySelector('.process__end');
+  gsap.set(end.children, { opacity: 0, y: 30 });
+  ScrollTrigger.create({
+    trigger: end,
+    containerAnimation: tween,
+    start: 'left 85%',
+    once: true,
+    onEnter: () => gsap.to(end.children, { opacity: 1, y: 0, duration: 1.1, stagger: 0.12, ease: 'expo.out' }),
   });
 }
 
@@ -420,7 +455,7 @@ function initColumns() {
 function initContact() {
   gsap.from('.contact__detail', { y: 40, opacity: 0, duration: 1.2, stagger: 0.1, ease: 'expo.out', scrollTrigger: { trigger: '.contact__details', start: 'top 88%', once: true } });
   gsap.from('.form', { y: 80, opacity: 0, rotateX: 6, transformOrigin: 'top center', duration: 1.5, ease: 'expo.out', scrollTrigger: { trigger: '.form', start: 'top 85%', once: true }, clearProps: 'all' });
-  gsap.from('.form > *', { y: 24, opacity: 0, duration: 1, stagger: 0.06, ease: 'expo.out', delay: 0.3, scrollTrigger: { trigger: '.form', start: 'top 85%', once: true } });
+  gsap.from('.form > *:not(.form__success)', { y: 24, opacity: 0, duration: 1, stagger: 0.06, ease: 'expo.out', delay: 0.3, scrollTrigger: { trigger: '.form', start: 'top 85%', once: true } });
 }
 
 /* ------------------------------------------------------------------ */

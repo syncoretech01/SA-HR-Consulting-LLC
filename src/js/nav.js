@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { getLenis } from './scroll.js';
+import { setNavDark } from './animations.js';
 
 export function initNav() {
   const nav = document.getElementById('nav');
@@ -27,6 +28,8 @@ export function initNav() {
     burger.setAttribute('aria-expanded', 'true');
     menu.classList.add('is-open');
     menu.setAttribute('aria-hidden', 'false');
+    nav.classList.remove('is-hidden');
+    setNavDark('menu', true);
     lenis.stop();
     gsap.timeline()
       .to(menuBg, { clipPath: 'circle(150% at calc(100% - 3rem) 2.5rem)', duration: 1, ease: 'expo.inOut' })
@@ -39,10 +42,12 @@ export function initNav() {
     open = false;
     burger.classList.remove('is-open');
     burger.setAttribute('aria-expanded', 'false');
+    gsap.to(burger, { x: 0, y: 0, duration: 0.4 });
     gsap.timeline({
       onComplete: () => {
         menu.classList.remove('is-open');
         menu.setAttribute('aria-hidden', 'true');
+        setNavDark('menu', false);
         lenis.start();
       },
     })
