@@ -406,10 +406,12 @@ function initStack() {
   cards.forEach((card, i) => {
     if (i === cards.length - 1) return;
     const next = cards[i + 1];
-    gsap.to(card, {
+    // Explicit start values: GSAP would otherwise interpolate filter from "none" = brightness(0)
+    gsap.fromTo(card, { scale: 1, filter: 'brightness(1)' }, {
       scale: 0.93,
       filter: 'brightness(0.94)',
       ease: 'none',
+      immediateRender: false,
       scrollTrigger: {
         trigger: next,
         start: 'top bottom',

@@ -1,6 +1,6 @@
 # SA HR Consulting LLC — Website
 
-Premium single-page site for SA HR Consulting LLC (career consulting for high school students, college students, new graduates and early professionals). Baldwin, NY · 718-791-7214.
+Premium single-page site for SA HR Consulting LLC — outsourced HR for small businesses (recruitment, onboarding, employee relations, performance reviews) sold as monthly packages or à la carte. Baldwin, NY · 718-791-7214.
 
 ## Stack
 
