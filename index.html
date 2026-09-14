@@ -1,0 +1,860 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>SA HR Consulting LLC — Career Coaching for Students & New Grads | Baldwin, NY</title>
+    <meta name="description" content="SA HR Consulting LLC helps high school students, college students and new graduates land the roles they deserve — resume editing, interview coaching, job application support, career planning and salary negotiation. Free 20-minute consultation." />
+    <meta name="theme-color" content="#F6F1EA" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F1A2B'/%3E%3Cpath d='M20 44 L32 18 L44 44' stroke='%23D4A853' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M25 35 H39' stroke='%23F6F1EA' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Manrope:wght@300..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- ================= PRELOADER ================= -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+      <div class="preloader__inner">
+        <div class="preloader__mark">
+          <svg viewBox="0 0 64 64" width="72" height="72" class="preloader__logo">
+            <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="currentColor" stroke-width="2" class="pl-rect" />
+            <path d="M20 44 L32 18 L44 44" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" class="pl-path" />
+            <path d="M25 35 H39" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" class="pl-path pl-path--2" />
+          </svg>
+        </div>
+        <div class="preloader__words">
+          <span class="preloader__word">Resume</span>
+          <span class="preloader__word">Interview</span>
+          <span class="preloader__word">Negotiate</span>
+          <span class="preloader__word">Career</span>
+        </div>
+        <div class="preloader__counter"><span id="preloaderCount">0</span><sup>%</sup></div>
+        <div class="preloader__bar"><span id="preloaderBar"></span></div>
+      </div>
+      <div class="preloader__curtain preloader__curtain--1"></div>
+      <div class="preloader__curtain preloader__curtain--2"></div>
+    </div>
+
+    <!-- ================= CURSOR ================= -->
+    <div class="cursor" id="cursor" aria-hidden="true">
+      <div class="cursor__dot"></div>
+      <div class="cursor__ring"></div>
+      <div class="cursor__label"><span id="cursorLabel">View</span></div>
+    </div>
+
+    <!-- ================= PAGE TRANSITION LAYER ================= -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- ================= NAV ================= -->
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="#top" class="nav__brand magnetic" data-cursor="-">
+          <span class="nav__logo">
+            <svg viewBox="0 0 64 64" width="38" height="38">
+              <rect width="64" height="64" rx="14" fill="currentColor" class="nav__logo-bg" />
+              <path d="M20 44 L32 18 L44 44" stroke="#D4A853" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M25 35 H39" stroke="#F6F1EA" stroke-width="4" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="nav__wordmark">
+            <span class="nav__name">SA HR Consulting</span>
+            <span class="nav__tag">LLC · Baldwin, NY</span>
+          </span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary">
+          <a href="#services" class="nav__link magnetic" data-text="Services">Services</a>
+          <a href="#process" class="nav__link magnetic" data-text="Process">Process</a>
+          <a href="#who" class="nav__link magnetic" data-text="Who We Help">Who We Help</a>
+          <a href="#stories" class="nav__link magnetic" data-text="Stories">Stories</a>
+          <a href="#faq" class="nav__link magnetic" data-text="FAQ">FAQ</a>
+        </nav>
+
+        <div class="nav__cta">
+          <a href="tel:7187917214" class="nav__phone magnetic">718-791-7214</a>
+          <a href="#contact" class="btn btn--primary btn--sm magnetic" data-cursor="Book">
+            <span class="btn__label">Free 20-min Call</span>
+            <span class="btn__icon">→</span>
+          </a>
+          <button class="nav__burger magnetic" id="burger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= MOBILE / FULLSCREEN MENU ================= -->
+    <div class="menu" id="menu" aria-hidden="true">
+      <div class="menu__bg"></div>
+      <div class="menu__inner">
+        <nav class="menu__links">
+          <a href="#services" class="menu__link"><span class="menu__num">01</span><span class="menu__text">Services</span></a>
+          <a href="#process" class="menu__link"><span class="menu__num">02</span><span class="menu__text">Process</span></a>
+          <a href="#who" class="menu__link"><span class="menu__num">03</span><span class="menu__text">Who We Help</span></a>
+          <a href="#stories" class="menu__link"><span class="menu__num">04</span><span class="menu__text">Stories</span></a>
+          <a href="#faq" class="menu__link"><span class="menu__num">05</span><span class="menu__text">FAQ</span></a>
+          <a href="#contact" class="menu__link"><span class="menu__num">06</span><span class="menu__text">Contact</span></a>
+        </nav>
+        <div class="menu__meta">
+          <div>
+            <span class="menu__meta-label">Call</span>
+            <a href="tel:7187917214">718-791-7214</a>
+          </div>
+          <div>
+            <span class="menu__meta-label">Visit</span>
+            <address>1112 Elizabeth St,<br />Baldwin, NY</address>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main id="top">
+      <!-- ================= HERO ================= -->
+      <section class="hero" id="hero">
+        <canvas class="hero__canvas" id="heroCanvas"></canvas>
+        <div class="hero__glow hero__glow--1"></div>
+        <div class="hero__glow hero__glow--2"></div>
+
+        <div class="hero__inner">
+          <div class="hero__eyebrow">
+            <span class="hero__eyebrow-dot"></span>
+            <span>Career consulting for students &amp; new graduates</span>
+          </div>
+
+          <h1 class="hero__title">
+            <span class="hero__line"><span class="hero__word">Your</span> <span class="hero__word hero__word--serif">first</span> <span class="hero__word">offer</span></span>
+            <span class="hero__line"><span class="hero__word">should</span> <span class="hero__word">feel</span> <span class="hero__word hero__word--italic">inevitable.</span></span>
+          </h1>
+
+          <p class="hero__lede">
+            SA HR Consulting turns nervous applicants into confident hires — with
+            resume editing, interview coaching, application strategy and
+            salary negotiation taught by an HR insider.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary btn--lg magnetic" data-cursor="Book">
+              <span class="btn__label">Book your free 20-minute consultation</span>
+              <span class="btn__icon">→</span>
+            </a>
+            <a href="#services" class="btn btn--ghost btn--lg magnetic">
+              <span class="btn__label">Explore services</span>
+            </a>
+          </div>
+
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <span class="hero__stat-num" data-count="20">0</span><span class="hero__stat-unit">min</span>
+              <span class="hero__stat-label">Free first consultation</span>
+            </div>
+            <div class="hero__stat">
+              <span class="hero__stat-num" data-count="7">0</span>
+              <span class="hero__stat-label">Focused career services</span>
+            </div>
+            <div class="hero__stat">
+              <span class="hero__stat-num" data-count="1">0</span><span class="hero__stat-unit">:1</span>
+              <span class="hero__stat-label">Personal coaching, always</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__scroll">
+          <span class="hero__scroll-line"></span>
+          <span>Scroll</span>
+        </div>
+
+        <div class="hero__card hero__card--1 parallax-el" data-depth="0.06">
+          <span class="hero__card-tag">Resume</span>
+          <strong>Critiqued &amp; edited</strong>
+          <span class="hero__card-sub">ATS-ready in one session</span>
+        </div>
+        <div class="hero__card hero__card--2 parallax-el" data-depth="-0.05">
+          <span class="hero__card-tag">Offer</span>
+          <strong>Negotiated</strong>
+          <span class="hero__card-sub">Know your number</span>
+        </div>
+      </section>
+
+      <!-- ================= MARQUEE ================= -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track" id="marqueeTrack">
+          <span>Resume Critiquing</span><i>✦</i>
+          <span>Interview Coaching</span><i>✦</i>
+          <span>Job Applications</span><i>✦</i>
+          <span>New Grad Resumes</span><i>✦</i>
+          <span>Career Planning</span><i>✦</i>
+          <span>Salary Negotiation</span><i>✦</i>
+          <span>Free 20-min Consultation</span><i>✦</i>
+        </div>
+      </div>
+
+      <!-- ================= IMMERSIVE ZOOM INTRO ================= -->
+      <section class="zoom" id="about">
+        <div class="zoom__pin">
+          <div class="zoom__frame">
+            <div class="zoom__media">
+              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1800&q=80" alt="College students collaborating and smiling" loading="lazy" />
+              <div class="zoom__media-overlay"></div>
+            </div>
+            <div class="zoom__caption">
+              <span class="zoom__caption-line"></span>
+              <span>Built for the moment you step off campus</span>
+            </div>
+          </div>
+          <div class="zoom__text">
+            <p class="zoom__kicker">Why we exist</p>
+            <h2 class="zoom__title split-lines">
+              Most students are never taught how to get hired. We teach exactly that.
+            </h2>
+            <p class="zoom__body reveal-up">
+              SA HR Consulting LLC is a Baldwin, New York career practice that helps
+              high school students, college students and recent graduates translate
+              potential into offers. Real HR experience. Real hiring criteria. No fluff.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SERVICES ================= -->
+      <section class="services" id="services">
+        <div class="container">
+          <div class="section-head">
+            <p class="kicker reveal-up"><span>01</span> What we do</p>
+            <h2 class="section-title split-lines">Seven services. One goal: <em>the offer.</em></h2>
+            <p class="section-lede reveal-up">Every engagement is one-on-one, tailored to your field, and built on what hiring managers actually score.</p>
+          </div>
+
+          <div class="services__grid" id="servicesGrid">
+            <article class="svc tilt" data-cursor="Explore">
+              <div class="svc__inner">
+                <div class="svc__top">
+                  <span class="svc__num">01</span>
+                  <span class="svc__badge svc__badge--gold">Free</span>
+                </div>
+                <div class="svc__icon">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="24" cy="24" r="17" /><path d="M24 13v11l7 4" /></svg>
+                </div>
+                <h3 class="svc__title">20-Minute Free Consultation</h3>
+                <p class="svc__desc">A no-pressure conversation for high school and college students. We map where you are, where you want to go, and the fastest honest path between the two.</p>
+                <ul class="svc__list">
+                  <li>High school &amp; college students</li>
+                  <li>Phone or video</li>
+                  <li>Zero obligation</li>
+                </ul>
+                <a href="#contact" class="svc__link">Book a slot <span>→</span></a>
+              </div>
+              <div class="svc__reveal" style="--img: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80')"></div>
+            </article>
+
+            <article class="svc tilt svc--tall" data-cursor="Explore">
+              <div class="svc__inner">
+                <div class="svc__top">
+                  <span class="svc__num">02</span>
+                  <span class="svc__badge">Most popular</span>
+                </div>
+                <div class="svc__icon">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8h16l8 8v24H13z" /><path d="M29 8v8h8M18 24h12M18 30h12M18 36h8" /></svg>
+                </div>
+                <h3 class="svc__title">Resume Critiquing &amp; Editing</h3>
+                <p class="svc__desc">A line-by-line critique from someone who has screened thousands of resumes — then a full rewrite that survives applicant tracking systems and impresses humans.</p>
+                <ul class="svc__list">
+                  <li>ATS keyword optimization</li>
+                  <li>Achievement-driven bullets</li>
+                  <li>Modern, clean formatting</li>
+                </ul>
+                <a href="#contact" class="svc__link">Get critiqued <span>→</span></a>
+              </div>
+              <div class="svc__reveal" style="--img: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80')"></div>
+            </article>
+
+            <article class="svc tilt" data-cursor="Explore">
+              <div class="svc__inner">
+                <div class="svc__top"><span class="svc__num">03</span></div>
+                <div class="svc__icon">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="10" width="32" height="22" rx="3" /><path d="M16 40h16M24 32v8M16 20h6M16 25h12" /></svg>
+                </div>
+                <h3 class="svc__title">Interview Coaching</h3>
+                <p class="svc__desc">Mock interviews, behavioral frameworks, and honest feedback until “tell me about yourself” becomes your favorite question.</p>
+                <ul class="svc__list">
+                  <li>STAR method mastery</li>
+                  <li>Recorded mock sessions</li>
+                  <li>Virtual &amp; panel formats</li>
+                </ul>
+                <a href="#contact" class="svc__link">Start practicing <span>→</span></a>
+              </div>
+              <div class="svc__reveal" style="--img: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80')"></div>
+            </article>
+
+            <article class="svc tilt" data-cursor="Explore">
+              <div class="svc__inner">
+                <div class="svc__top"><span class="svc__num">04</span></div>
+                <div class="svc__icon">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14h28v24H10z" /><path d="M10 20h28M16 14v-4h16v4M19 28l4 4 7-7" /></svg>
+                </div>
+                <h3 class="svc__title">Job Application Assistance</h3>
+                <p class="svc__desc">We help you target the right roles, tailor every submission and build a pipeline you can actually track — so applying stops feeling like a lottery.</p>
+                <ul class="svc__list">
+                  <li>Role targeting &amp; tailoring</li>
+                  <li>Cover letters that get read</li>
+                  <li>Follow-up scripts</li>
+                </ul>
+                <a href="#contact" class="svc__link">Apply smarter <span>→</span></a>
+              </div>
+              <div class="svc__reveal" style="--img: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80')"></div>
+            </article>
+
+            <article class="svc tilt svc--tall" data-cursor="Explore">
+              <div class="svc__inner">
+                <div class="svc__top"><span class="svc__num">05</span><span class="svc__badge">New grads</span></div>
+                <div class="svc__icon">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20l18-8 18 8-18 8z" /><path d="M14 24v8c0 3 5 5 10 5s10-2 10-5v-8M42 20v10" /></svg>
+                </div>
+                <h3 class="svc__title">New Grad Resume Assistance</h3>
+                <p class="svc__desc">No experience? You have more than you think. We turn coursework, projects, internships and campus leadership into a resume that reads like a professional's.</p>
+                <ul class="svc__list">
+                  <li>Projects &amp; coursework framing</li>
+                  <li>Internship to impact</li>
+                  <li>LinkedIn alignment</li>
+                </ul>
+                <a href="#contact" class="svc__link">Build my first resume <span>→</span></a>
+              </div>
+              <div class="svc__reveal" style="--img: url('https://images.unsplash.com/photo-1627556704290-2b1f5853ff78?auto=format&fit=crop&w=900&q=80')"></div>
+            </article>
+
+            <article class="svc tilt" data-cursor="Explore">
+              <div class="svc__inner">
+                <div class="svc__top"><span class="svc__num">06</span></div>
+                <div class="svc__icon">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 38l10-12 8 7 14-18" /><path d="M32 15h8v8" /></svg>
+                </div>
+                <h3 class="svc__title">Career Development, Transition &amp; Planning</h3>
+                <p class="svc__desc">A 12-month roadmap for growth, a pivot into a new field, or the first real plan you've ever had — built with a coach who knows how careers actually move.</p>
+                <ul class="svc__list">
+                  <li>Personal roadmap</li>
+                  <li>Transition strategy</li>
+                  <li>Skill gap analysis</li>
+                </ul>
+                <a href="#contact" class="svc__link">Plan my path <span>→</span></a>
+              </div>
+              <div class="svc__reveal" style="--img: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80')"></div>
+            </article>
+
+            <article class="svc tilt svc--wide" data-cursor="Explore">
+              <div class="svc__inner">
+                <div class="svc__top"><span class="svc__num">07</span><span class="svc__badge svc__badge--gold">High ROI</span></div>
+                <div class="svc__icon">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="16" /><path d="M24 14v20M29 19c0-2-2-3-5-3s-5 1-5 3 2 3 5 3 5 1 5 3-2 3-5 3-5-1-5-3" /></svg>
+                </div>
+                <h3 class="svc__title">Salary Negotiation Training</h3>
+                <p class="svc__desc">Learn what the offer is really worth, how to ask for more without sounding difficult, and the exact language that moves the number. One conversation can be worth thousands a year — every year.</p>
+                <ul class="svc__list">
+                  <li>Market benchmarking</li>
+                  <li>Word-for-word scripts</li>
+                  <li>Live role-play</li>
+                </ul>
+                <a href="#contact" class="svc__link">Learn to negotiate <span>→</span></a>
+              </div>
+              <div class="svc__reveal" style="--img: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80')"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= HORIZONTAL PARALLAX PROCESS ================= -->
+      <section class="process" id="process">
+        <div class="process__pin">
+          <div class="process__head">
+            <p class="kicker"><span>02</span> How it works</p>
+            <h2 class="section-title">From first call to signed offer.</h2>
+          </div>
+          <div class="process__track" id="processTrack">
+            <div class="process__bg-text" data-speed="0.35">PROCESS</div>
+
+            <article class="step">
+              <div class="step__index">01</div>
+              <div class="step__visual" data-speed="0.8">
+                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80" alt="Discovery conversation" loading="lazy" />
+              </div>
+              <div class="step__body">
+                <h3>Discover</h3>
+                <p>A free 20-minute call. We learn your goals, your field and your timeline — and tell you honestly what it'll take.</p>
+                <span class="step__meta">Free · 20 min</span>
+              </div>
+            </article>
+
+            <article class="step">
+              <div class="step__index">02</div>
+              <div class="step__visual" data-speed="1.15">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="Resume review on a desk" loading="lazy" />
+              </div>
+              <div class="step__body">
+                <h3>Rebuild</h3>
+                <p>Your resume, LinkedIn and application materials are critiqued and rebuilt against real hiring criteria.</p>
+                <span class="step__meta">Week 1</span>
+              </div>
+            </article>
+
+            <article class="step">
+              <div class="step__index">03</div>
+              <div class="step__visual" data-speed="0.7">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80" alt="Mock interview session" loading="lazy" />
+              </div>
+              <div class="step__body">
+                <h3>Rehearse</h3>
+                <p>Mock interviews, feedback loops and confidence work until you walk in knowing exactly what you'll say.</p>
+                <span class="step__meta">Weeks 2–3</span>
+              </div>
+            </article>
+
+            <article class="step">
+              <div class="step__index">04</div>
+              <div class="step__visual" data-speed="1.25">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80" alt="Signing an offer" loading="lazy" />
+              </div>
+              <div class="step__body">
+                <h3>Negotiate</h3>
+                <p>When the offer lands, you'll know what it's worth and exactly how to ask for more — with scripts you've practiced.</p>
+                <span class="step__meta">Offer stage</span>
+              </div>
+            </article>
+
+            <div class="process__end">
+              <p>Ready?</p>
+              <a href="#contact" class="btn btn--primary btn--lg magnetic" data-cursor="Book">
+                <span class="btn__label">Start with the free call</span><span class="btn__icon">→</span>
+              </a>
+            </div>
+          </div>
+          <div class="process__progress"><span id="processProgress"></span></div>
+        </div>
+      </section>
+
+      <!-- ================= EXPLODING OBJECT ================= -->
+      <section class="explode" id="explode">
+        <div class="explode__pin">
+          <canvas class="explode__canvas" id="explodeCanvas"></canvas>
+          <div class="explode__center">
+            <p class="kicker kicker--light"><span>03</span> Inside every engagement</p>
+            <h2 class="explode__title">What you actually <em>walk away with.</em></h2>
+            <p class="explode__hint">Keep scrolling to open it up</p>
+          </div>
+
+          <div class="explode__label explode__label--1">
+            <span class="explode__label-num">01</span>
+            <strong>A resume that passes ATS</strong>
+            <p>Keyword-mapped to the roles you want, formatted to be read in six seconds.</p>
+          </div>
+          <div class="explode__label explode__label--2">
+            <span class="explode__label-num">02</span>
+            <strong>Interview answers you own</strong>
+            <p>Stories, structure and delivery drilled until they sound like you on your best day.</p>
+          </div>
+          <div class="explode__label explode__label--3">
+            <span class="explode__label-num">03</span>
+            <strong>A targeted application system</strong>
+            <p>A tracked pipeline of the right roles instead of 200 blind applications.</p>
+          </div>
+          <div class="explode__label explode__label--4">
+            <span class="explode__label-num">04</span>
+            <strong>A negotiation script</strong>
+            <p>Your market number, your ask, and the words to say it — practiced live.</p>
+          </div>
+          <div class="explode__label explode__label--5">
+            <span class="explode__label-num">05</span>
+            <strong>A 12-month career plan</strong>
+            <p>What to learn, whom to meet and what to aim for after the first offer.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= WHO WE HELP — IMMERSIVE REVEAL ================= -->
+      <section class="who" id="who">
+        <div class="container">
+          <div class="section-head section-head--center">
+            <p class="kicker reveal-up"><span>04</span> Who we help</p>
+            <h2 class="section-title split-lines">Wherever you are on the path, we meet you there.</h2>
+          </div>
+        </div>
+
+        <div class="who__panels">
+          <article class="who__panel">
+            <div class="who__media">
+              <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1600&q=80" alt="High school students in a classroom" loading="lazy" />
+            </div>
+            <div class="who__content">
+              <span class="who__index">I</span>
+              <h3>High School Students</h3>
+              <p>Your first resume, your first interview and a clear picture of what comes after graduation — with a free 20-minute call to start.</p>
+              <ul><li>First resume &amp; part-time job prep</li><li>College &amp; scholarship interview coaching</li><li>Early career exploration</li></ul>
+            </div>
+          </article>
+
+          <article class="who__panel">
+            <div class="who__media">
+              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80" alt="College students" loading="lazy" />
+            </div>
+            <div class="who__content">
+              <span class="who__index">II</span>
+              <h3>College Students</h3>
+              <p>Internships, co-ops and the campus-to-career leap. We help you compete for the roles everyone else is applying to.</p>
+              <ul><li>Internship applications</li><li>Resume &amp; LinkedIn overhaul</li><li>Career fair &amp; networking strategy</li></ul>
+            </div>
+          </article>
+
+          <article class="who__panel">
+            <div class="who__media">
+              <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1600&q=80" alt="New graduates celebrating" loading="lazy" />
+            </div>
+            <div class="who__content">
+              <span class="who__index">III</span>
+              <h3>New Graduates</h3>
+              <p>The degree is done. Now the market. We build the new-grad resume, the interview confidence and the negotiation plan for your first real offer.</p>
+              <ul><li>New grad resume assistance</li><li>Full-cycle job application support</li><li>First-offer salary negotiation</li></ul>
+            </div>
+          </article>
+
+          <article class="who__panel">
+            <div class="who__media">
+              <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=80" alt="Professionals in a meeting" loading="lazy" />
+            </div>
+            <div class="who__content">
+              <span class="who__index">IV</span>
+              <h3>Early Professionals in Transition</h3>
+              <p>Changing fields, chasing a promotion or restarting after a detour — we help you tell the story and plan the next chapter.</p>
+              <ul><li>Career transition planning</li><li>Development roadmap</li><li>Raise &amp; promotion negotiation</li></ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= LAYER TRANSFORMATION — STACKED APPROACH ================= -->
+      <section class="stack" id="approach">
+        <div class="container">
+          <div class="stack__layout">
+            <div class="stack__sticky">
+              <p class="kicker"><span>05</span> Our approach</p>
+              <h2 class="section-title">Coaching that thinks like the person hiring you.</h2>
+              <p class="section-lede">Four principles behind every session, stacked in the order we apply them.</p>
+              <a href="#contact" class="btn btn--dark magnetic" data-cursor="Book"><span class="btn__label">Talk to us</span><span class="btn__icon">→</span></a>
+            </div>
+            <div class="stack__cards" id="stackCards">
+              <div class="stack__card">
+                <span class="stack__card-num">01</span>
+                <h3>Insider criteria, not generic advice</h3>
+                <p>We coach to the rubric recruiters and hiring managers actually use — the six-second scan, the competency matrix, the culture-fit questions nobody tells you about.</p>
+              </div>
+              <div class="stack__card">
+                <span class="stack__card-num">02</span>
+                <h3>Your voice, sharpened</h3>
+                <p>No templates. Your resume and your answers sound like you — just clearer, more confident and more specific than you've ever been.</p>
+              </div>
+              <div class="stack__card">
+                <span class="stack__card-num">03</span>
+                <h3>Practice until it's boring</h3>
+                <p>Confidence is a by-product of repetition. Mock interviews and live negotiation drills until the hard questions feel routine.</p>
+              </div>
+              <div class="stack__card">
+                <span class="stack__card-num">04</span>
+                <h3>Plan past the first offer</h3>
+                <p>The goal isn't just a job — it's a career with momentum. Every client leaves with a plan for the twelve months after “yes.”</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 3D SLIDER — STORIES ================= -->
+      <section class="stories" id="stories">
+        <div class="container">
+          <div class="section-head section-head--center">
+            <p class="kicker reveal-up"><span>06</span> Client stories</p>
+            <h2 class="section-title split-lines">From “no callbacks” to “which offer?”</h2>
+          </div>
+        </div>
+
+        <div class="slider3d" id="slider3d" data-cursor="Drag">
+          <div class="slider3d__stage">
+            <article class="slide3d">
+              <div class="slide3d__quote">“I applied to 80 jobs and heard nothing. After the resume rewrite and two mock interviews I had three interviews in two weeks and an offer by the end of the month.”</div>
+              <div class="slide3d__person">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="" loading="lazy" />
+                <div><strong>Maya R.</strong><span>Marketing, Class of 2025</span></div>
+              </div>
+            </article>
+            <article class="slide3d">
+              <div class="slide3d__quote">“The salary negotiation session paid for itself many times over. I asked for $8,000 more than the first offer — and got it.”</div>
+              <div class="slide3d__person">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="" loading="lazy" />
+                <div><strong>Daniel K.</strong><span>Software Engineer, new grad</span></div>
+              </div>
+            </article>
+            <article class="slide3d">
+              <div class="slide3d__quote">“As a high school senior I had no idea what to put on a resume. The free consultation alone gave me a plan, and the follow-up got me my first internship.”</div>
+              <div class="slide3d__person">
+                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=200&q=80" alt="" loading="lazy" />
+                <div><strong>Aaliyah T.</strong><span>High school senior, Baldwin</span></div>
+              </div>
+            </article>
+            <article class="slide3d">
+              <div class="slide3d__quote">“I was pivoting from hospitality to HR and didn't know how to tell that story. Now I do — and I'm in the role I wanted.”</div>
+              <div class="slide3d__person">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" alt="" loading="lazy" />
+                <div><strong>Chris M.</strong><span>Career transition, 2024</span></div>
+              </div>
+            </article>
+            <article class="slide3d">
+              <div class="slide3d__quote">“Interview coaching turned my biggest weakness into the reason they hired me. I can't recommend it enough.”</div>
+              <div class="slide3d__person">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="" loading="lazy" />
+                <div><strong>Priya S.</strong><span>Nursing, Class of 2025</span></div>
+              </div>
+            </article>
+          </div>
+          <div class="slider3d__controls">
+            <button class="slider3d__btn magnetic" id="slidePrev" aria-label="Previous story">←</button>
+            <div class="slider3d__dots" id="slideDots"></div>
+            <button class="slider3d__btn magnetic" id="slideNext" aria-label="Next story">→</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VERTICAL COLUMNS SLIDER ================= -->
+      <section class="columns" id="columns">
+        <div class="columns__text">
+          <p class="kicker kicker--light"><span>07</span> Moments</p>
+          <h2 class="columns__title">Every offer starts with one honest conversation.</h2>
+          <a href="#contact" class="btn btn--gold magnetic" data-cursor="Book"><span class="btn__label">Have yours</span><span class="btn__icon">→</span></a>
+        </div>
+        <div class="columns__grid" id="columnsGrid">
+          <div class="columns__col" data-dir="-1">
+            <figure><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" /></figure>
+            <figure><img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" /></figure>
+            <figure><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" /></figure>
+            <figure><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" /></figure>
+          </div>
+          <div class="columns__col" data-dir="1">
+            <figure><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" /></figure>
+            <figure><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" /></figure>
+            <figure><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" /></figure>
+            <figure><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" /></figure>
+          </div>
+          <div class="columns__col" data-dir="-1">
+            <figure><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" /></figure>
+            <figure><img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" /></figure>
+            <figure><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" /></figure>
+            <figure><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" /></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= NEGOTIATION / NUMBERS ================= -->
+      <section class="numbers" id="numbers">
+        <div class="container">
+          <div class="numbers__grid">
+            <div class="numbers__copy">
+              <p class="kicker reveal-up"><span>08</span> The math</p>
+              <h2 class="section-title split-lines">The most expensive sentence in your career is <em>“that sounds fine.”</em></h2>
+              <p class="section-lede reveal-up">Most first-time hires accept the first number. We teach you to benchmark it, ask for more with grace, and compound the difference for decades.</p>
+            </div>
+            <div class="numbers__cards">
+              <div class="num-card reveal-up">
+                <span class="num-card__value">$<span data-count="5000">0</span>+</span>
+                <span class="num-card__label">Typical first-offer increase from one well-run negotiation</span>
+              </div>
+              <div class="num-card reveal-up">
+                <span class="num-card__value"><span data-count="6">0</span> sec</span>
+                <span class="num-card__label">Average recruiter scan of a resume — we make every second count</span>
+              </div>
+              <div class="num-card reveal-up">
+                <span class="num-card__value"><span data-count="3">0</span>×</span>
+                <span class="num-card__label">More callbacks clients report after a targeted application system</span>
+              </div>
+              <div class="num-card reveal-up">
+                <span class="num-card__value"><span data-count="100">0</span>%</span>
+                <span class="num-card__label">One-on-one. No group calls, no templates, no outsourcing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FAQ ================= -->
+      <section class="faq" id="faq">
+        <div class="container">
+          <div class="faq__layout">
+            <div class="faq__head">
+              <p class="kicker reveal-up"><span>09</span> Questions</p>
+              <h2 class="section-title split-lines">Things students ask before the first call.</h2>
+              <p class="section-lede reveal-up">Still unsure? The 20-minute consultation is free — ask us anything then.</p>
+            </div>
+            <div class="faq__list" id="faqList">
+              <div class="faq__item">
+                <button class="faq__q" aria-expanded="false"><span>Is the 20-minute consultation really free?</span><i class="faq__icon"></i></button>
+                <div class="faq__a"><div class="faq__a-inner"><p>Yes. For high school and college students it is completely free with no obligation. We use it to understand your goals and recommend the smallest amount of help that will actually move the needle.</p></div></div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__q" aria-expanded="false"><span>I have no work experience. Can you still build my resume?</span><i class="faq__icon"></i></button>
+                <div class="faq__a"><div class="faq__a-inner"><p>Absolutely — that is what our New Grad Resume Assistance is designed for. Coursework, class projects, volunteering, sports, clubs and part-time work all translate into skills employers recognize when they're framed correctly.</p></div></div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__q" aria-expanded="false"><span>How do sessions happen?</span><i class="faq__icon"></i></button>
+                <div class="faq__a"><div class="faq__a-inner"><p>By phone or video for most clients, and in person by appointment from our Baldwin, NY office at 1112 Elizabeth St. Sessions are one-on-one and scheduled around your class or work hours.</p></div></div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__q" aria-expanded="false"><span>How long until I see results?</span><i class="faq__icon"></i></button>
+                <div class="faq__a"><div class="faq__a-inner"><p>A resume critique and rewrite is typically complete within a week. Interview coaching is usually two to three sessions. Most clients report a noticeable change in callbacks within the first month of applying with rebuilt materials.</p></div></div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__q" aria-expanded="false"><span>Can you help me negotiate an offer I already have?</span><i class="faq__icon"></i></button>
+                <div class="faq__a"><div class="faq__a-inner"><p>Yes — and the sooner the better. Call 718-791-7214 and we'll prioritize a negotiation session so you respond to the offer with a benchmarked number and a practiced script.</p></div></div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__q" aria-expanded="false"><span>Do you work with parents of high school students?</span><i class="faq__icon"></i></button>
+                <div class="faq__a"><div class="faq__a-inner"><p>We do. Parents are welcome on the free consultation, and many book on behalf of their students. The coaching itself is always with the student directly.</p></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CONTACT ================= -->
+      <section class="contact" id="contact">
+        <div class="container">
+          <div class="contact__layout">
+            <div class="contact__info">
+              <p class="kicker kicker--light reveal-up"><span>10</span> Get started</p>
+              <h2 class="contact__title split-lines">Book your free 20-minute consultation.</h2>
+              <p class="contact__lede reveal-up">Tell us where you are and where you want to be. We'll reply within one business day to schedule your call.</p>
+
+              <div class="contact__details">
+                <a href="tel:7187917214" class="contact__detail magnetic" data-cursor="Call">
+                  <span class="contact__detail-label">Phone</span>
+                  <span class="contact__detail-value">718-791-7214</span>
+                </a>
+                <a href="https://maps.google.com/?q=1112+Elizabeth+St,+Baldwin,+NY" target="_blank" rel="noopener" class="contact__detail magnetic" data-cursor="Map">
+                  <span class="contact__detail-label">Office</span>
+                  <span class="contact__detail-value">1112 Elizabeth St,<br />Baldwin, NY</span>
+                </a>
+                <div class="contact__detail">
+                  <span class="contact__detail-label">Hours</span>
+                  <span class="contact__detail-value">Mon – Sat<br />9:00 AM – 7:00 PM</span>
+                </div>
+              </div>
+            </div>
+
+            <form class="form" id="contactForm" novalidate>
+              <div class="form__row">
+                <div class="form__field">
+                  <input type="text" id="fName" name="name" required placeholder=" " autocomplete="name" />
+                  <label for="fName">Full name</label>
+                  <span class="form__line"></span>
+                </div>
+                <div class="form__field">
+                  <input type="tel" id="fPhone" name="phone" required placeholder=" " autocomplete="tel" />
+                  <label for="fPhone">Phone number</label>
+                  <span class="form__line"></span>
+                </div>
+              </div>
+              <div class="form__field">
+                <input type="email" id="fEmail" name="email" required placeholder=" " autocomplete="email" />
+                <label for="fEmail">Email address</label>
+                <span class="form__line"></span>
+              </div>
+              <div class="form__field form__field--select">
+                <select id="fStage" name="stage" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>High school student</option>
+                  <option>College student</option>
+                  <option>New graduate</option>
+                  <option>Early professional / career change</option>
+                  <option>Parent booking for a student</option>
+                </select>
+                <label for="fStage" class="form__label-static">I am a…</label>
+                <span class="form__line"></span>
+              </div>
+              <fieldset class="form__chips">
+                <legend>I'm interested in</legend>
+                <label class="chip"><input type="checkbox" name="service" value="Free consultation" /><span>Free 20-min consultation</span></label>
+                <label class="chip"><input type="checkbox" name="service" value="Resume" /><span>Resume critique &amp; editing</span></label>
+                <label class="chip"><input type="checkbox" name="service" value="Interview" /><span>Interview coaching</span></label>
+                <label class="chip"><input type="checkbox" name="service" value="Applications" /><span>Job applications</span></label>
+                <label class="chip"><input type="checkbox" name="service" value="New grad" /><span>New grad resume</span></label>
+                <label class="chip"><input type="checkbox" name="service" value="Career" /><span>Career planning</span></label>
+                <label class="chip"><input type="checkbox" name="service" value="Salary" /><span>Salary negotiation</span></label>
+              </fieldset>
+              <div class="form__field">
+                <textarea id="fMsg" name="message" rows="3" placeholder=" "></textarea>
+                <label for="fMsg">Anything we should know? (optional)</label>
+                <span class="form__line"></span>
+              </div>
+              <button type="submit" class="btn btn--gold btn--lg btn--block magnetic" id="submitBtn" data-cursor="Send">
+                <span class="btn__label">Request my free consultation</span><span class="btn__icon">→</span>
+              </button>
+              <p class="form__note">Prefer to talk now? Call <a href="tel:7187917214">718-791-7214</a>.</p>
+              <div class="form__success" id="formSuccess">
+                <div class="form__success-icon">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="20" class="fs-circle" /><path d="M15 25l6 6 12-13" class="fs-check" /></svg>
+                </div>
+                <h3>Request received.</h3>
+                <p>Thank you — we'll reach out within one business day to schedule your free consultation.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+      <div class="footer__marquee" aria-hidden="true">
+        <div class="footer__marquee-track" id="footerMarquee">
+          <span>Let's get you hired</span><i>✦</i><span>Let's get you hired</span><i>✦</i><span>Let's get you hired</span><i>✦</i><span>Let's get you hired</span><i>✦</i>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <svg viewBox="0 0 64 64" width="44" height="44">
+              <rect width="64" height="64" rx="14" fill="#F6F1EA" />
+              <path d="M20 44 L32 18 L44 44" stroke="#C8973A" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M25 35 H39" stroke="#0F1A2B" stroke-width="4" stroke-linecap="round" />
+            </svg>
+            <p class="footer__name">SA HR Consulting LLC</p>
+            <p class="footer__desc">Career consulting for high school students, college students, new graduates and early professionals. Based in Baldwin, New York.</p>
+          </div>
+          <div class="footer__col">
+            <h4>Services</h4>
+            <a href="#services">Free 20-min consultation</a>
+            <a href="#services">Resume critiquing &amp; editing</a>
+            <a href="#services">Interview coaching</a>
+            <a href="#services">Job application assistance</a>
+            <a href="#services">New grad resume assistance</a>
+            <a href="#services">Career development &amp; planning</a>
+            <a href="#services">Salary negotiation</a>
+          </div>
+          <div class="footer__col">
+            <h4>Company</h4>
+            <a href="#about">About</a>
+            <a href="#process">Process</a>
+            <a href="#who">Who we help</a>
+            <a href="#stories">Stories</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <div class="footer__col">
+            <h4>Contact</h4>
+            <a href="tel:7187917214">718-791-7214</a>
+            <address>1112 Elizabeth St,<br />Baldwin, NY</address>
+            <a href="#contact" class="footer__cta">Book a free call →</a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>© <span id="year"></span> SA HR Consulting LLC. All rights reserved.</span>
+          <button class="footer__top magnetic" id="toTop">Back to top ↑</button>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
